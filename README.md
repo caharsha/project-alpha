@@ -1,4 +1,4 @@
 project-alpha
 =============
 
-Term project for Artificial Intelligence
+Term project for CSCE - 625 Artificial Intelligence
