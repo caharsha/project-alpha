@@ -1,2 +1,5 @@
 #brainstorming file
 /notes.txt
+
+*.swp
+*.swo
