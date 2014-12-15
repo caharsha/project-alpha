@@ -1,17 +1,8 @@
-'''changing seeds in random number generator python
+'''
 Harsha Ashokan Copparam
  
 world_gen.py
-generates wumpus worlds - given dimensions.
-location of wumpus
-location of pits
-location of gold
-dead ends
-percepts - bump, scream, glitter, breeze, stench
-
-difficulty variable - difficulty
-
-A function return_percept that returns the percept sequence once specified with a location.
+Generates wumpus worlds - given dimensions and difficulty mode.
 '''
 
 import random_gen
@@ -74,7 +65,7 @@ def pits_location (dimension,difficulty):
 	#print num_pits
 	pits = [[0,0] for i in range(num_pits)]
 	for i in range(num_pits):
-		pits[i] = [ int(math.floor(random_gen.random_01_gen()*dimension)), int(math.floor(random_gen.random_01_gen()*dimension)) ]
+		pits[i] = [ int(random_gen.random_01_gen()*dimension), int(random_gen.random_01_gen()*dimension) ]
 	#print "pits at "
 	#print pits
 	breeze_pl = [[0,0] for i in range(num_pits*4+1)]
@@ -106,18 +97,24 @@ def world(dimension,difficulty):
 	Difficulty : easy - No pits, medium - 1*x pits, hard - 1.5*x pits, unfair - 2*x pits	
 	'''
 	#Initialise list of percepts: [[loc,loc],
-	#Glitter, Stench, Breeze, Scream
-	
+	#Initialize the world variable whose format is as follows:	
+	#[[x,y],Glitter, Stench, Breeze, Scream.............]
+	print "World generation"
 	percept_var = [[0,0], False, False, False, False] 
 	world_var = [[percept_var] for i in range(dimension*dimension)]
+	i = 0
 	for k in range(dimension):
 		for j in range(dimension):
-			world_var[k*10+j] = [[k,j], False, False, False, False]
-	for i in range(dimension*dimension):
-		print i,world_var[i]
+			world_var[i] = [[k,j], False, False, False, False]
+			print k,j
+			i = i + 1
+	#Initialise locations for pits, wumpus and gold.
+	#for i in range(dimension*dimension):
+	#	print i,world_var[i]
 	pit_return = pits_location(dimension,difficulty)
 	gold_return = gold_location(dimension)
 	wumpus_return = wumpus_location(dimension)	
+	print "Locations of pit, gold, Wumpus pseudo - randomized"
 	for breeze in pit_return['breeze_location']:
 		for i in range(dimension*dimension):
 			if world_var[i][0] == breeze:
@@ -133,18 +130,17 @@ def world(dimension,difficulty):
 	for i in range(dimension*dimension):
 		if gold_return['gold_location'] == world_var[i][0]:
 			world_var[i][1] = True
-			break	
+			break
+	print "Added percepts"
+	#print "Percept sequences by location: "
 	#for i in range(dimension*dimension):
 	#	print i,world_var[i]
+	return {'world':world_var, 'pit': pit_return, 'gold': gold_return, 'wumpus': wumpus_return}
 
 
 #'''
-world(10,3)
+world(100,3)
 '''
 for i in range(4):
 	pits_location (100,i)	
 '''	
-
-
-
-
