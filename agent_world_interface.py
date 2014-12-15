@@ -90,5 +90,4 @@ return_percept_seq('move_forward', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_backward', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_right', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_left', envi['wumpus']['stench_location'][0],'')
-
 '''

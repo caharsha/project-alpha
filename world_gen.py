@@ -98,14 +98,14 @@ def world_func(dimension,difficulty):
 	'''
 	#Initialise list of percepts: [[loc,loc],
 	#Initialize the world variable whose format is as follows:	
-	#[[x,y],Glitter, Stench, Breeze, Scream.............]
+	#[[x,y],Glitter, Stench, Breeze............]
 	print "World generation"
-	percept_var = [[0,0], False, False, False, False] 
+	percept_var = [[0,0], False, False, False] 
 	world_var = [[percept_var] for i in range(dimension*dimension)]
 	i = 0
 	for k in range(dimension):
 		for j in range(dimension):
-			world_var[i] = [[k,j], False, False, False, False]
+			world_var[i] = [[k,j], False, False, False]
 			#print k,j
 			i = i + 1
 	#Initialise locations for pits, wumpus and gold.
