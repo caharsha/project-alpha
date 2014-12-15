@@ -90,7 +90,7 @@ def pits_location (dimension,difficulty):
 
 
 
-def world(dimension,difficulty):
+def world_func(dimension,difficulty):
 	'''
 	The world generator
         Dimension : the size of the world is dimension * dimension
@@ -106,7 +106,7 @@ def world(dimension,difficulty):
 	for k in range(dimension):
 		for j in range(dimension):
 			world_var[i] = [[k,j], False, False, False, False]
-			print k,j
+			#print k,j
 			i = i + 1
 	#Initialise locations for pits, wumpus and gold.
 	#for i in range(dimension*dimension):
@@ -135,12 +135,12 @@ def world(dimension,difficulty):
 	#print "Percept sequences by location: "
 	#for i in range(dimension*dimension):
 	#	print i,world_var[i]
-	return {'world':world_var, 'pit': pit_return, 'gold': gold_return, 'wumpus': wumpus_return}
+	return {'dimension': dimension, 'world':world_var, 'pit': pit_return, 'gold': gold_return, 'wumpus': wumpus_return}
 
 
-#'''
-world(100,3)
 '''
+world_gen_func(100,3)
+
 for i in range(4):
 	pits_location (100,i)	
 '''	
