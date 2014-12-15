@@ -33,6 +33,9 @@ def return_percept_seq (agent_action, agent_position, parameter):
 			print "You do not have an arrow to shoot the wumpus with. "	
 		elif(parameter == envi['wumpus']['wumpus_location']):
 			print "Killed the wumpus"
+			for i in range(dim*dim):
+				if agent_position == envi['world'][i][0]:
+					envi['world'][i][5] = True 
 		else: 
 			print "You wasted your chance, there was no wumpus at that location."
 			wrong_action = 2 #"No wumpus at that location" 
@@ -49,7 +52,10 @@ def return_percept_seq (agent_action, agent_position, parameter):
 		#print agent_new_position[0]
 		#print agent_new_position[1]
 		print "Reached End of Map, take a different route."
-		wrong_action = 4 #"End of Map"
+		#wrong_action = 4 #"End of Map"
+		for i in range(dim*dim):
+			if agent_position == envi['world'][i][0]:
+				envi['world'][i][4] = True 
 		agent_new_position = agent_position
 	if(agent_new_position in envi['pit']['pit_location']):
 		print "You just went into one of the numerous pits."
@@ -71,13 +77,13 @@ def return_percept_seq (agent_action, agent_position, parameter):
 
 
 
-'''
+
 return_percept_seq('move_forward', [0,99], '')
 return_percept_seq('move_backward', [0,1], '')
 return_percept_seq('move_left', [1,0], '')
 return_percept_seq('move_right', [0,99], '')
 return_percept_seq('grab_gold', envi['gold']['gold_location'],'')
-return_percept_seq('shoot_wumpus', envi['gold']['gold_location'],[43,26])
+return_percept_seq('shoot_wumpus', envi['gold']['gold_location'],envi['wumpus']['wumpus_location'])
 
 
 return_percept_seq('move_forward', envi['pit']['breeze_location'][0],'')
@@ -90,4 +96,4 @@ return_percept_seq('move_forward', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_backward', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_right', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_left', envi['wumpus']['stench_location'][0],'')
-'''
+
