@@ -77,7 +77,7 @@ def return_percept_seq (agent_action, agent_position, parameter):
 
 
 
-
+'''
 return_percept_seq('move_forward', [0,99], '')
 return_percept_seq('move_backward', [0,1], '')
 return_percept_seq('move_left', [1,0], '')
@@ -96,4 +96,4 @@ return_percept_seq('move_forward', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_backward', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_right', envi['wumpus']['stench_location'][0],'')
 return_percept_seq('move_left', envi['wumpus']['stench_location'][0],'')
-
+'''
