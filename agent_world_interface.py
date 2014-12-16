@@ -10,13 +10,12 @@ Returns the percept sequence after each agent action
 {'wumpus_location':wumpus_loc, 'stench_location':stench_loc}
 '''
 
-import world_gen
-envi = world_gen.world_func(100,3)
-has_arrow = True
+#import world_gen
+#envi = world_gen.world_func(100,3)
+#has_arrow = True
 
-def return_percept_seq (agent_action, agent_position, parameter):
-	global world
-	global has_arrow
+def return_percept_seq (envi, agent_action, agent_position, parameter, has_arrow):
+	#global has_arrow
 	wrong_action = -1
 	dim = envi['dimension']
 	agent_new_position = [0,0]
@@ -76,24 +75,23 @@ def return_percept_seq (agent_action, agent_position, parameter):
 
 
 
-
 '''
-return_percept_seq('move_forward', [0,99], '')
-return_percept_seq('move_backward', [0,1], '')
-return_percept_seq('move_left', [1,0], '')
-return_percept_seq('move_right', [0,99], '')
-return_percept_seq('grab_gold', envi['gold']['gold_location'],'')
-return_percept_seq('shoot_wumpus', envi['gold']['gold_location'],envi['wumpus']['wumpus_location'])
+return_percept_seq(envi,'move_forward', [0,99], '',True)
+return_percept_seq(envi,'move_backward', [0,1], '',True)
+return_percept_seq(envi,'move_left', [1,0], '',True)
+return_percept_seq(envi,'move_right', [0,99], '',True)
+return_percept_seq(envi,'grab_gold', envi['gold']['gold_location'],'',True)
+return_percept_seq(envi,'shoot_wumpus', envi['gold']['gold_location'],envi['wumpus']['wumpus_location'],True)
 
 
-return_percept_seq('move_forward', envi['pit']['breeze_location'][0],'')
-return_percept_seq('move_backward', envi['pit']['breeze_location'][0],'')
-return_percept_seq('move_right', envi['pit']['breeze_location'][0],'')
-return_percept_seq('move_left', envi['pit']['breeze_location'][0],'')
+return_percept_seq(envi,'move_forward', envi['pit']['breeze_location'][0],'',True)
+return_percept_seq(envi,'move_backward', envi['pit']['breeze_location'][0],'',True)
+return_percept_seq(envi,'move_right', envi['pit']['breeze_location'][0],'',True)
+return_percept_seq(envi,'move_left', envi['pit']['breeze_location'][0],'',True)
 
 print envi['wumpus']['wumpus_location'] 
-return_percept_seq('move_forward', envi['wumpus']['stench_location'][0],'')
-return_percept_seq('move_backward', envi['wumpus']['stench_location'][0],'')
-return_percept_seq('move_right', envi['wumpus']['stench_location'][0],'')
-return_percept_seq('move_left', envi['wumpus']['stench_location'][0],'')
+return_percept_seq(envi,'move_forward', envi['wumpus']['stench_location'][0],'',True)
+return_percept_seq(envi,'move_backward', envi['wumpus']['stench_location'][0],'',True)
+return_percept_seq(envi,'move_right', envi['wumpus']['stench_location'][0],'',True)
+return_percept_seq(envi,'move_left', envi['wumpus']['stench_location'][0],'',True)
 '''
