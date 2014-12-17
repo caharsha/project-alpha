@@ -64,6 +64,12 @@ def agent_action_return(agent_world_perception, list_of_visited_locations, retur
 			list_of_visited_locations.reverse()
 			return_flag == True
 		if agent_location in list_of_visited_locations:
+			'''
+			Our second heuristic for the agent is used when we choose the shortest path to return to the location of origin for extraction. 
+			We reason that moving backward and moving left moves us closer to [0.0] from any location in the world. 
+			Hence the same heuristic function is employed except with the lower value favored to achieve the intuition.
+			'''
+			
 			list_of_visited_locations.remove(agent_location)
 			next_action_location = list_of_visited_locations(0) 
 	elif glitter == True:
@@ -159,6 +165,13 @@ def next_agent_loc(agent_loc):
 		move_left_result = [agent_loc[0]-1, agent_loc[1]]
 	next_agent_loc = [move_forward_result, move_backward_result, move_left_result, move_right_result]
 	next_agent_loc = [x for x in next_agent_loc if x != [-1,-1]]
+	'''
+	The heuristic employed while exploring the path uses the sum of the coordinates of the location which results from the action. 
+	For example, move forward from [4,5] goes to [4,6], which gives a heuristic value of 10, while, move backward from the same square goes to [4,4] which gives a heuristic value of 8. 
+	We take the path with the larger heuristic. 
+	This essentially favors moving forward and right over backward and left.
+	'''
+	
 	next_agent_loc.sort(key = lambda x:x[1]+x[0], reverse=True)
 	print "next agent location"
 	print next_agent_loc
