@@ -18,7 +18,7 @@ agent picks next move based on new position's safe square in the database
 move to said square only if safe
 '''
 import random_gen
-
+'''
 #dim = 100
 agent_world_perception = [[['unknown', 'unknown', 'unknown'] for i in range(dim)] for j in range(dim)]
 #print agent_world_perception[99]
@@ -26,6 +26,7 @@ grabbed_goal_flag = False
 return_flag = False
 list_of_visited_locations = []
 agent_location = [0,0]
+'''
 def initialize_agent_perception(agent_world_perception, list_of_visited_locations):
 	'''
 	
@@ -42,11 +43,11 @@ def agent_action_return(agent_world_perception, list_of_visited_locations, retur
 	'''
 	Returns agent action, current position (to check if the agent thinks that it is at the same place as the eval_agent thinks it is, parameter associated with action (if any) when a percept_seq is given.
 	'''
-	global agent_world_perception
-	global grabbed_goal_flag
-	global agent_location
-	global list_of_visited_locations
-	initialize_agent_perception()
+	#global agent_world_perception
+	#global grabbed_goal_flag
+	#global agent_location
+	#global list_of_visited_locations
+	#initialize_agent_perception()
 	agent_location = agent_loc
 	next_agent_location = next_agent_loc(agent_location)
 	next_action_location = []	
@@ -165,6 +166,7 @@ def next_agent_loc(agent_loc):
 
 
 #dim = 100
+'''
 agent_world_perception = [[['unknown', 'unknown', 'unknown'] for i in range(dim)] for j in range(dim)]
 #print agent_world_perception[99]
 grabbed_goal_flag = False
@@ -172,4 +174,5 @@ return_flag = False
 list_of_visited_locations = []
 agent_location = [0,0]
 
-agent_action_return([False, True, False, False, False], [43,99])	
+agent_action_return([False, True, False, False, False], [43,99])
+'''
